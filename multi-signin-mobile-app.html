@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+		<title>Juniper | Sign In</title>
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!-- Segment -->
+		<script>
+			!function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","debug","page","once","off","on","addSourceMiddleware","addIntegrationMiddleware","setAnonymousId","addDestinationMiddleware"];analytics.factory=function(e){return function(){var t=Array.prototype.slice.call(arguments);t.unshift(e);analytics.push(t);return analytics}};for(var e=0;e<analytics.methods.length;e++){var key=analytics.methods[e];analytics[key]=analytics.factory(key)}analytics.load=function(key,e){var t=document.createElement("script");t.type="text/javascript";t.async=!0;t.src="https://cdn.segment.com/analytics.js/v1/" + key + "/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);analytics._loadOptions=e};analytics._writeKey="yvb9S8BqaHvoHNDaOaNnlCE6ngU4iF58";;analytics.SNIPPET_VERSION="4.15.3";
+				analytics.load("yvb9S8BqaHvoHNDaOaNnlCE6ngU4iF58");
+				analytics.page();
+				analytics.ready(function () {
+					ga('require', 'linker');
+					ga('linker:autoLink', ['junipermarket.com', 'localhost']);
+				});
+			}}();
+		</script>
+		<!-- Google Tag Manager -->
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-NJVDXF7');</script>
+		<!-- End Google Tag Manager -->
+		<link
+			href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/css/bootstrap.min.css"
+			rel="stylesheet"
+			type="text/css"
+		/>
+		
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+			rel="stylesheet"
+		/>
+		<link  rel='icon' type='image/svg+xml' href= 'https://images.junipercdn.com/application-assets/juniper-market/images/JuniperMarket-Favicon.svg'/>
+		<link  rel='alternate icon' type='image/x-icon' href= 'https://images.junipercdn.com/application-assets/juniper-market/images/JuniperMarket-Favicon.png'/>
+
+	</head>
+
+	<body>
+		<!-- Google Tag Manager (noscript) -->
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NJVDXF7"
+		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<!-- End Google Tag Manager (noscript) -->
+		<style>
+			/* MODIFICATIONS TO AZURE B2C SELECTORS */
+			/* attr is the wrapper that b2c uses */
+			
+			/* Azure B2C content tag, styles to re-order content inside it*/
+			#api {
+				display: flex;
+				flex-direction: column;
+			}
+
+			/* Container for Signing in with a Market Account	*/
+			.divider h2 {
+				display: none;
+			}
+
+			/* apply to all inputs except the checkbox */
+			.entry-item input {
+				width: 100%;
+				height: 56px;
+				background-color: transparent;
+				border: 1px solid #e7e4e0;
+				padding: 15px;
+				border-radius: 3px;
+			}
+
+			/* inputs in the form */
+			.entry-item input::placeholder {
+				color: #968c83;
+				size: 16px;
+				text-transform: lowercase;
+			}
+
+			.entry-item input:focus {
+				outline: none;
+			}
+
+			/* dont show the what is this? link */
+			.entry-item .helpLink {
+				display: none;
+			}
+
+			/* wraps each iinput, did it to make error messages absolute and appear better */
+			.entry-item {
+				margin-top: 15px;
+				position: relative;
+			}
+
+			/* error message text */
+			.entry-item .itemLevel {
+				/* position: absolute; */
+				color: #b00020;
+				top: 0px;
+				font-size: 12px;
+			}
+			.error {
+				color: #b00020;
+				text-transform: lowercase;
+			}
+			/* this is the error under the button when a user exists for example */
+			.verifying-modal {
+				display: none;
+				text-transform: lowercase;
+			}
+
+			/* password changes */
+			.password-label {
+				position: absolute;
+				bottom: -25px;
+				right: 0;
+				width: 100%;
+				display: flex;
+				justify-content: flex-end;
+			}
+			@media only screen and (max-width: 500px) {
+				.password-label {
+					justify-content: center;
+				}
+			}
+
+			#forgotPassword {
+				font-weight: 500;
+				color: #326d62;
+				font-size: 14px;
+				text-decoration: none;
+				padding-top: 10px;
+			}
+
+			/* FORM BUTTON IS A CLASS THAT WE CREATED BUT CONTINUE ID IS FROM B2C */
+			.form-button > button,
+			#next, .accountButton  {
+				border-radius: 24px;
+				box-shadow: 0 4px 8px 0 rgba(44, 39, 56, 0.08),
+					0 2px 4px 0 rgba(44, 39, 56, 0.08);
+				background: #0a544a;
+				color: #fff;
+				outline: none;
+				border: 1px solid #0a544a;
+				height: 32px;
+				width: 100%;
+			}
+
+			/* wraps create button, use to be a cancel in there */
+			.buttons {
+				text-align: center;
+				margin-top: 56px;
+			}
+
+			/* create button */
+			#next {
+				width: 257px;
+				margin: auto;
+			}
+
+			/* dont show an intro paragraph they have, the cancel button and labels in forms except for the one in checkbox */
+			.intro,
+			.entry label {
+				display: none;
+			}
+			/* this is the wrapper for sign in with market but it might be to general to use and might cause problems */
+			.options {
+				text-align: center;
+			}
+			#localAccountForm {
+				padding: 0 102px;
+			}
+			#localAccountForm .divider {
+				display: none;
+			}
+
+			@media only screen and (max-width: 500px) {
+				#localAccountForm {
+					padding: 0;
+				}
+			}
+			.create {
+				margin-top: 40px;
+    		text-align: center;
+			}
+			#createAccount {
+				width: 257px;
+				display: block;
+				font-size: 14px;
+				color: #326d62;
+				margin: 25px auto;
+				padding: 6px 30px;
+				border-radius: 24px;
+				text-decoration: none;
+				border: 1px solid #326d62;
+			}
+			.create > p {
+				color: rgba(0, 0, 0, 0.87);
+				font-size: 20px;
+				font-weight: 500;
+			}	
+	
+			/* OUR CONTENT */
+			.header-wrapper {
+				position: relative;
+				width:100%;
+				height: 85px;
+	
+				
+			}
+			@media only screen and (max-width: 414px) {
+				.header-wrapper {
+					border-bottom: 1px solid #e7e4e0;
+					background: #fff;
+					z-index: 10;
+					position: fixed;
+					top:0;
+					left: 0;
+					
+				}
+			}
+			.close-form {
+				position: absolute;
+				right:0;
+				top:0;
+				height: 85px;
+				width:85px;
+				display:flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.logo-container {
+				max-width: 250px;
+				cursor: pointer;
+				display: flex;
+				align-items: center;
+				justify-content: flex-start;
+				margin: 0 35px;
+			}
+			@media only screen and (max-width: 768px) {
+				.logo-container {
+					max-width: 170px;
+					margin: 0 35px 0;
+					height: 100%;
+				}
+			}
+			.logo-container a {
+				width: 100%;
+				height: 85px;
+    			display: flex;
+			}
+			.logo-container img {
+				max-width: 100%;
+				max-height: 100%;
+				height: auto;
+				width: auto;
+			}
+
+			.register-content-wrapper {
+				max-width: 685px;
+				height: auto;
+				margin: 0 auto;
+				display: flex;
+				flex-direction: column;
+				padding: 0 30px;
+				font-family: 'Poppins', sans-serif;
+			}
+
+			@media only screen and (max-width: 985px) {
+				.register-content-wrapper {
+					padding: 0;
+				}
+			}
+
+			.register-content-title-wrapper {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			.register-content-title {
+				font-size: 34px;
+				color: #323d3b;
+				font-weight: 300;
+				text-align: center;
+			}
+
+			.register-content-subtitle {
+				display: flex;
+				font-size: 14px;
+				font-weight: 500;
+				color: rgba(0, 0, 0, 0.87);
+			}
+
+			.register-content-subtitle-signin {
+				margin-left: 10px;
+				color: #326d62;
+				font-size: 14px;
+			}
+
+			@media only screen and (max-width: 985px) {
+				.register-content-subtitle,
+				.register-content-subtitle-signin {
+					font-size: 12px;
+				}
+			}
+
+			.register-content-forms-wrapper {
+				background-color: rgba(231, 228, 224, 0.1);
+				margin-top: 20px;
+				padding: 35px;
+				display: flex;
+				height: auto;
+				margin-bottom: 20px;
+			}
+
+			@media only screen and (max-width: 985px) {
+				.register-content-forms-wrapper {
+					flex-direction: column;
+				}
+			}
+			@media only screen and (max-width: 414px) {
+				.register-content-forms-wrapper {
+					background: #fff;
+					margin-top: 0;
+					padding-top: 80px;
+					padding-bottom: 0;
+				}
+			}
+			.register-content-form-container {
+				flex-grow: 1;
+				max-width: 100%;
+				position: relative;
+				z-index: 2;
+				padding: 0;
+	
+			}
+
+			@media only screen and (max-width: 565px) {
+				.juniper-signup-wrapper {
+					top:365px;
+				}
+			}
+			@media only screen and (max-width: 414px) {
+				.juniper-signup-wrapper {
+					top:356px;
+				}
+			}
+			@media only screen and (max-width: 375px) {
+				.juniper-signup-wrapper {
+					top:365px;
+				}
+			}
+			
+			/* the actual icon */
+			.register-content-tooltip-wrapper {
+				position: absolute;
+				bottom: 0;
+				right: 15px;
+				height: 54px;
+				width: 50px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				cursor: pointer;
+			}
+
+			.register-content-tooltip-wrapper > div:first-child {
+				background: #24534c;
+				width: 16px;
+				height: 16px;
+				border: 1px solid #24534c;
+				border-radius: 50px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				color: #fff;
+				font-size: 13px;
+			}
+			.register-content-tooltip-expand-wrapper {
+				position: absolute;
+				background: #326d62;
+				top: 50px;
+				right: 0;
+				height: auto;
+				width: 300px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-size: 14px;
+				color: #fff;
+				padding: 10px;
+				border-radius: 4px;
+				visibility: hidden;
+				z-index: 5;
+			}
+			.register-content-tooltip-wrapper:hover
+				> .register-content-tooltip-expand-wrapper {
+				visibility: visible;
+			}
+			.register-content-tooltip-expand-wrapper:before,
+			.register-content-tooltip-expand-wrapper:after {
+				content: '';
+				display: block;
+				position: absolute;
+				bottom: 100%;
+				width: 0;
+				height: 0;
+			}
+			.register-content-tooltip-expand-wrapper:before {
+				right: 15px;
+				border: 11px solid transparent;
+				border-bottom-color: #326d62;
+			}
+			.register-content-tooltip-expand-wrapper:after {
+				right: 16px;
+				border: 10px solid transparent;
+				border-bottom-color: #326d62;
+			}
+	
+			.register-content-form-or-container {
+				    position: absolute;
+					top: -14px;
+					width: 100%;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+			}
+			.register-content-form-or-container span {
+				background:  #fcfcfc;
+				width: 30px;
+				display: flex;
+				justify-content: center;
+				font-size:18px;
+				color: #565656;
+			}
+			.register-content-form-title {
+				font-size: 20px;
+				color: rgba(0, 0, 0, 0.87);
+				text-align: center;
+				font-weight: 500;
+			}
+			.register-content-form-subtitle {
+				font-size: 14px;
+				color: rgba(0, 0, 0, 0.87);
+				margin-top: 16px;
+				text-align: center;
+				font-weight: 500;
+			}
+			.register-content-market-title, .register-content-market-subtitle {
+    		width: 100%;
+    		bottom: 40px;
+				font-weight: 500;
+				position: absolute;
+				text-align: center;
+				color: rgba(0, 0, 0, 0.87);
+			}
+			.register-content-market-subtitle {
+				font-size: 16px;
+				margin-top: 16px;
+		
+			}
+			/* Market Planner account */
+			.register-content-market-title span {
+				font-size: 20px;
+			}
+			.register-content-market-title p {
+				margin-top: 20px;
+			}
+			.claims-provider-list-buttons,
+			#signinwithmarketaccount {
+				display: none;
+			}
+
+			@media only screen and (max-width: 414px) {
+				.register-content-market-subtitle {
+					display: none;
+				}
+			}
+
+			.register-content-market-description {
+				margin-top: 16px;
+				text-align: center;
+			}
+			.register-content-market-description > p {
+				font-size: 14px;
+				color: rgba(0, 0, 0, 0.87);
+				
+			}
+
+			.register-content-market-button, .accountButton {
+				max-width: 335px;
+				font-weight: 500;
+				color: #326d62;
+				text-align: center;
+				margin: 90px auto 0 auto;
+				border: 1px solid #326d62;
+				background-color: #ffffff;
+			}
+			@media only screen and (max-width: 592px) {
+				.accountButton {
+					margin: 115px auto 0 auto;
+				}
+			}
+			
+			.register-content-market-logos {
+				display: flex;
+				flex-wrap: wrap;
+				margin: 10px 2px 0 2px;
+			}
+			.register-content-market-logos-container {
+				width: 100%;
+				display: flex;
+				flex-wrap: wrap;
+			}
+			.register-content-market-logo {
+				flex-grow: 1;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin: 10px 0 0;
+			}
+			@media only screen and (max-width: 414px) {
+				.register-content-market-logo img {
+					max-width: 116px;
+				}
+			}
+			.register-content-market-logos table {
+				width: 100%;
+			}
+			.register-content-market-logos table td {
+				padding: 10px 20px;
+				text-align: center;
+
+			}
+			.register-content-market-logos table td img {
+				max-width: 100%;
+			}
+			.market-logo {
+				width: 172px;
+				height: 44px;
+				flex-grow: 1;
+				flex-basis: 50%;
+				margin: 0 0 30px 0;
+				text-align: center;
+			}
+			@media only screen and (max-width: 650px) {
+				.market-logo {
+					margin: 20px;
+				}
+			}
+			.market-logo > img {
+				height: auto;
+				width: auto;
+				max-width: 100%;
+				max-height: 100%;
+			}
+			.footer-wrapper{
+				width:100%;
+				margin-top: 10px;
+				text-align: center;
+				padding-bottom: 50px;
+			}
+			.footer-wrapper a {
+				color:#326d62;
+				font-size: 14px;
+				font-weight:500;
+				cursor: pointer;
+				text-decoration: none;
+			}
+		</style>
+		<div>
+			<div class="header-wrapper">
+				<div class="logo-container">
+					<a id="logo-home">
+						<img alt="Company Logo" class="companyLogo" src="https://images.junipercdn.com/application-assets/juniper-market/images/JuniperMarket-Logo_Horiz_White_Back.svg" />
+					</a>
+				</div>
+				<!-- <div class="close-form">
+					<a id="close-form" >
+						<img alt="Close" height="40" width="40"
+							src="https://b2cmarketplacedevstorage.blob.core.windows.net/devcontainer/assets/icon-close.svg" />
+					</a>
+				</div> -->
+			</div>
+			<div class="register-content-wrapper">
+				<!-- SIGNUP TITLE -->
+				<div class="register-content-title-wrapper">
+					<div class="register-content-title-container">
+						<div class="register-content-title">
+							<span>sign in</span>
+						</div>
+					</div>
+				</div>
+				<!-- SIGNUP CONTENT-->
+				<div class="register-content-forms-wrapper">
+					<div class="register-content-form-container">
+						<div class="juniper-signup-wrapper">						
+							
+							<div class="register-content-form-title">
+								<span>sign in with your email address</span>
+							</div>
+						</div>
+						<div id="api"></div>
+						<!-- Local development mode, uncomment this section -->
+						<!-- START -->
+						<!-- <div id="api" data-name="Unified">
+							<div class="claims-provider-list-buttons social" aria-label="Sign in with your social account" role="form">
+								<div class="intro">
+									<h2 aria-level="1">Sign in with your social account</h2>
+								</div>
+								<div class="options">
+										<div>
+												<button class="accountButton firstButton claims-provider-selection" id="signinwithmarketaccount" role="link" autofocus="">sign in with market planner account</button>
+										</div>
+								</div>
+							</div>
+			
+							<div class="divider">
+								<h2>OR</h2>
+							</div>
+							<form id="localAccountForm" action="JavaScript:void(0);" class="localAccount" aria-label="Sign in with your email address" _lpchecked="1">
+								<div class="intro">
+									<h2 aria-level="1">
+										Sign in with your email address
+									</h2>
+								</div>
+								<div class="error pageLevel" aria-hidden="true" role="alert" style="display: none;">
+									<p></p>
+								</div>
+								<div class="entry">
+									<div class="entry-item">
+										<label for="signInName">
+											Email Address
+										</label>
+										<div class="error itemLevel" aria-hidden="true" role="alert" style="display: none;">
+											<p></p>
+										</div>
+										<input type="text" id="signInName" name="Email Address" title="Please enter a valid Email Address" autofocus="" placeholder="Email Address" value="" aria-label="Email Address" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAZ9JREFUOBGVU7uKwkAUPXmID5AttNyFYBGwsLGwFBUFF/wOhfyE5jPcxkZt/IHFxg+wsZJtrFwS8NWIohZm545xNkp8XcjMnbnnnJk790YyTfPTcZwm+z7whEmSNGWwaqPR+Ca4/AqZCO5BX+STkcBTJ5/gp9HLkb2BR34kEoGu6xewlwQ0TUOxWPQXCIVCIhAMBsEeS6y9MbHpOirNlUoF6XQanU4Hq9UKhmHAsiy0Wq2L2DWZ1i+l4Ccg1et1hwJ0zd1uxzGUwn6/98OLPZbiL1vUxA3OZEI8IhOGlfKdTU3+BrThZ5lMBoVCAev1Gr1eD7PZDIFAALIs80NIRNzAT4DIw+EQm80G2WyWQ1KpFHK5nICr1NvezhIR5iyXSyQSCUSjUSiKgnK5jGQyCVVVEYvF0O12oeTz+R+GJfk3L5n8yWTC+yEej3OxwWCA4/GI7XaLfr/P0/jvlis2VadUKvH+IFK73YZt2yCxcDiM6ZR+SuDuI45GI4zHY8zncxwOB05YLBZ8Pg83BajOjEilummEuVeFmtssvgJurPYHGEKbZ/T0eqIAAAAASUVORK5CYII=&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: pointer;">
+									</div>
+										<div class="entry-item">
+											<div class="password-label">
+												<label for="password">Password</label>
+														<a id="forgotPassword" href="/junipermarketplacedev.onmicrosoft.com/B2C_1A_signup_signin_ForcePasswordReset/api/CombinedSigninAndSignup/forgotPassword?csrf_token=UW1OQ1JLMHdkSmdPUVgzcVd6UURQdlZTclVLRWJBVGVSYlhnS3lKN0EyV0svUnNMSE5CQnJDRUNjZjZybUlWRFl1aHR0N2Nuejdxa2JJVEV3MjUzeXc9PTsyMDIyLTA2LTAxVDE4OjQ3OjA3LjgzMDA3MzhaO3F3cFQvM3lDY1ZXNE9BNk5CVjVLc2c9PTt7Ik9yY2hlc3RyYXRpb25TdGVwIjoxfQ==&amp;tx=StateProperties=eyJUSUQiOiJlZTZjYTYwOS0xODY5LTQ3ZjktYTBkZC1lZTQ5YzJmMDA3NmUifQ&amp;p=B2C_1A_signup_signin_ForcePasswordReset">forgot your password?</a>
+																			</div>
+											<div class="error itemLevel" aria-hidden="true" style="display: none;">
+												<p role="alert"></p>
+											</div>
+											<input type="password" id="password" name="Password" placeholder="Password" aria-label="Password" autocomplete="off" aria-required="true" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAZ9JREFUOBGVU7uKwkAUPXmID5AttNyFYBGwsLGwFBUFF/wOhfyE5jPcxkZt/IHFxg+wsZJtrFwS8NWIohZm545xNkp8XcjMnbnnnJk790YyTfPTcZwm+z7whEmSNGWwaqPR+Ca4/AqZCO5BX+STkcBTJ5/gp9HLkb2BR34kEoGu6xewlwQ0TUOxWPQXCIVCIhAMBsEeS6y9MbHpOirNlUoF6XQanU4Hq9UKhmHAsiy0Wq2L2DWZ1i+l4Ccg1et1hwJ0zd1uxzGUwn6/98OLPZbiL1vUxA3OZEI8IhOGlfKdTU3+BrThZ5lMBoVCAev1Gr1eD7PZDIFAALIs80NIRNzAT4DIw+EQm80G2WyWQ1KpFHK5nICr1NvezhIR5iyXSyQSCUSjUSiKgnK5jGQyCVVVEYvF0O12oeTz+R+GJfk3L5n8yWTC+yEej3OxwWCA4/GI7XaLfr/P0/jvlis2VadUKvH+IFK73YZt2yCxcDiM6ZR+SuDuI45GI4zHY8zncxwOB05YLBZ8Pg83BajOjEilummEuVeFmtssvgJurPYHGEKbZ/T0eqIAAAAASUVORK5CYII=&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
+																	</div>
+									<div class="working"></div>
+				
+				
+									<div class="buttons">
+										<button id="next" type="submit" form="localAccountForm">sign in</button>
+									</div>
+								</div>
+								<div class="divider">
+									<h2>OR</h2>
+								</div>
+								<div class="create">
+									<p>
+										new to JuniperMarket?<a id="createAccount" href="/junipermarketplacedev.onmicrosoft.com/B2C_1A_signup_signin_ForcePasswordReset/api/CombinedSigninAndSignup/unified?local=signup&amp;csrf_token=UW1OQ1JLMHdkSmdPUVgzcVd6UURQdlZTclVLRWJBVGVSYlhnS3lKN0EyV0svUnNMSE5CQnJDRUNjZjZybUlWRFl1aHR0N2Nuejdxa2JJVEV3MjUzeXc9PTsyMDIyLTA2LTAxVDE4OjQ3OjA3LjgzMDA3MzhaO3F3cFQvM3lDY1ZXNE9BNk5CVjVLc2c9PTt7Ik9yY2hlc3RyYXRpb25TdGVwIjoxfQ==&amp;tx=StateProperties=eyJUSUQiOiJlZTZjYTYwOS0xODY5LTQ3ZjktYTBkZC1lZTQ5YzJmMDA3NmUifQ&amp;p=B2C_1A_signup_signin_ForcePasswordReset">create new account</a>
+									</p>
+								</div>
+							</form>
+						</div> -->
+						<!-- END -->
+						<!-- <div onclick="showTooltipInfo(this)" id="tooltipWrapper" class="register-content-tooltip-wrapper">
+							<div><span>?</span></div>
+							<div id="tooltipExpanded" class="register-content-tooltip-expand-wrapper">
+								<span>password must contain at least 8 characters, 3 characters need to be a mix of lowercase, uppercase, numbers and symbols.</span>
+							</div>
+						</div> -->
+					</div>
+				</div>
+			</div>
+			<!-- <div class="footer-wrapper"><a id="juniper-support" href="https://support.junipermarket.com/hc/en-us"
+					target="_blank">help & support</a></div> -->
+		</div>
+
+		<script>
+			function parseUrl() {
+				try {
+					//let params = 'p=B2C_1_JuniperMKTP_Dev_Multi_Signup&client_id=9e1c39ee-4ea6-4bee-aaf2-3ed99a00380b&nonce=defaultNonce&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fauth%2Fsign-up%2Fconfirmation&scope=openid&response_type=id_token&prompt=login';
+					let params = window.location.search;
+					let redirect = params.split('&').filter(u => u.includes('redirect_uri'))[0];
+					let home = decodeURIComponent(redirect.split('=')[1]);
+					let pathUrl = new URL(home);
+					return pathUrl.origin;
+
+				} catch (error) {
+					console.log(error);
+				}
+			}
+			document.getElementById('logo-home').setAttribute("href", parseUrl());
+			//document.getElementById('close-form').setAttribute("href", parseUrl());
+			localStorage.setItem('redirect-url', parseUrl());
+			document.cookie = `redirect-url=${parseUrl()}`;
+			// Updating form elements tab index to match UI appearance order
+				var elementsTabOrder = ['#email','#password','#forgotPassword','#next'];
+				elementsTabOrder.forEach(function(item,index){
+                    document.querySelector(item).setAttribute('tabindex',index + 1);
+				})
+
+			// var node = document.getElementById('tooltipWrapper');
+			// document
+			// 	.getElementById('password')
+			// 	.insertAdjacentElement('beforebegin', node);
+			document.querySelector('#next').innerText = 'sign in';
+			document.querySelector('#next').innerText = 'sign in';
+			//document.querySelector('#createAccount').innerText = 'create new account';
+			document.querySelector('#forgotPassword').innerText = 'forgot your password?';
+			//document.querySelector('.create > p').childNodes[0].nodeValue = "new to JuniperMarket? "
+			document
+				.querySelector('#next')
+				.setAttribute('aria-label', 'sign in');
+			function showTooltipInfo(node) {
+				var element = node.querySelector('#tooltipExpanded');
+				if (element.style.visibility == 'hidden') {
+					element.style.visibility = 'visible';
+				} else {
+					element.style.visibility = 'hidden';
+				}
+			}
+		</script>
+	</body>
+</html>
