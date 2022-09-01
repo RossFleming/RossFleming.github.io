@@ -258,8 +258,13 @@
 			}
 
             @font-face {
-                font-family: "konnect";
-                src: url(https://rossfleming.github.io/fonts/Konnect-Medium.65725ee.otf);
+                font-family: "konnect-medium";
+                src: url(https://rossfleming.github.io/fonts/Konnect-Medium.otf);
+            }
+
+			@font-face {
+                font-family: "konnect-semibold";
+                src: url(https://rossfleming.github.io/fonts/Konnect-SemiBold.otf);
             }
 
 			.register-content-wrapper {
@@ -269,7 +274,11 @@
 				display: flex;
 				flex-direction: column;
 				padding: 0 30px;
-				font-family: 'konnect', sans-serif;
+				font-family: 'konnect-medium', 'Poppins', sans-serif;
+			}
+
+			#forgotPassword, #next {
+				font-family: 'konnect-semibold', 'konnect-medium', 'Poppins', 'sans-serif';
 			}
 
 			@media only screen and (max-width: 985px) {
