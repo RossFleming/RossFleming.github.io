@@ -709,7 +709,7 @@
 			localStorage.setItem('redirect-url', parseUrl());
 			document.cookie = `redirect-url=${parseUrl()}`;
 			// Updating form elements tab index to match UI appearance order
-				var elementsTabOrder = ['#email','#password','#forgotPassword','#next'];
+				var elementsTabOrder = ['#signInName','#password','#forgotPassword','#next'];
 				elementsTabOrder.forEach(function(item,index){
                     document.querySelector(item).setAttribute('tabindex',index + 1);
 				})
@@ -718,7 +718,6 @@
 			// document
 			// 	.getElementById('password')
 			// 	.insertAdjacentElement('beforebegin', node);
-			document.querySelector("#email").placeholder = "email"
 			document.querySelector('#next').innerText = 'sign in';
 			//document.querySelector('#next').innerText = 'sign in';
 			//document.querySelector('#createAccount').innerText = 'create new account';
